@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">QuizTime</string>
+    <string name="question_text">Question Text</string>
+    <string name="back_button">Back</string>
+    <string name="next_button">Next</string>
+    <string name="A">A</string>
+    <string name="B">B</string>
+    <string name="C">C</string>
+    <string name="D">D</string>
 </resources>
