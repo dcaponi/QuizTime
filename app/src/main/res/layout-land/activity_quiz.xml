@@ -17,16 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:padding="15dp"
-            android:text="@string/q_1"/>
+            android:padding="15dp"/>
 
         <TextView
             android:id="@+id/choices_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:padding="15dp"
-            android:text="@string/a_1"/>
+            android:padding="15dp"/>
 
     </LinearLayout>
 
@@ -36,7 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
         <Button
             android:id="@+id/option_a"
