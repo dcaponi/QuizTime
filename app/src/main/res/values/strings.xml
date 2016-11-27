@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QuizTime</string>
+    <string name="app_name">Developer Quiz</string>
     <string name="question_text">Question Text</string>
     <string name="back_button">Back</string>
     <string name="next_button">Next</string>
@@ -8,23 +8,27 @@
     <string name="C">C</string>
     <string name="D">D</string>
     <string name="q_1">Question 1: What HTML tag is used to make a new image</string>
-    <string name="a_1">A) img \n B) p \n C) h1 \n D) html</string>
+    <string name="a_1">\n A) img \n B) p \n C) h1 \n D) html</string>
     <string name="q_2">Question 2: What CSS property can be used to place a div in front of the rest of the document</string>
-    <string name="a_2">A) front \n B) height \n C) background-image \n D) z-index</string>
+    <string name="a_2">\n A) front \n B) height \n C) background-image \n D) z-index</string>
     <string name="q_3">Question 3: Which of these sort methods gives the worst time complexity</string>
-    <string name="a_3">A) quick sort \n B) merge sort \n C) bubble sort \n D) heap sort</string>
+    <string name="a_3">\n A) quick sort \n B) merge sort \n C) bubble sort \n D) heap sort</string>
     <string name="q_4">Question 4: Which data structure has the best search performance time complexity</string>
-    <string name="a_4">A) binary tree \n B) array \n C) linked list \n D) trye</string>
+    <string name="a_4">\n A) binary tree \n B) array \n C) linked list \n D) trye</string>
     <string name="q_5">Question 5: What is the time complexity of Bubble Sort</string>
-    <string name="a_5">A) O(n) \n B) O(2n) \n C) O(n^2) \n D) O(log*n)</string>
+    <string name="a_5">\n A) O(n) \n B) O(2n) \n C) O(n^2) \n D) O(log*n)</string>
     <string name="q_6">Question 6: What is the opposite of malloc()</string>
-    <string name="a_6">A) collam() \n B) free() \n C) addMemory() \n D) mem()</string>
+    <string name="a_6">\n A) collam() \n B) free() \n C) addMemory() \n D) mem()</string>
     <string name="q_7">Question 7: What does it mean to have code that is DRY</string>
-    <string name="a_7">A) It wasnt raining \n B) Dont repeat yourself \n C) computer is not wet \n D) use best sorting algorithm</string>
+    <string name="a_7">\n A) It wasnt raining \n B) Dont repeat yourself \n C) computer is not wet \n D) use best sorting algorithm</string>
     <string name="q_8">Question 8: Who is the father of computer science</string>
-    <string name="a_8">A) Einstein \n B) Newton \n C) Turing \n D) Jobs</string>
+    <string name="a_8">\n A) Einstein \n B) Newton \n C) Turing \n D) Jobs</string>
     <string name="q_9">Question 9: Why would you use a do while loop as opposed to a for loop</string>
-    <string name="a_9">A) Code in loop executes at least once \n B) Its easy to write \n C) do while loops spin faster \n D) makes code look pretty</string>
+    <string name="a_9">\n A) Code in loop executes at least once \n B) Its easy to write \n C) do while loops spin faster \n D) makes code look pretty</string>
     <string name="q_10">Question 10: What does HTML stand for</string>
-    <string name="a_10">A) How to meet ladies \n B) help to make loops \n C) help to move linux \n D) hypertext markup language</string>
+    <string name="a_10">\n A) How to meet ladies \n B) help to make loops \n C) help to move linux \n D) hypertext markup language</string>
+    <string name="warning_text">You will lose points for this. Are you sure you would like to proceed?</string>
+    <string name="cheat_button">Cheat</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="judgement_toast">Cheating is wrong: -1 point</string>
 </resources>

@@ -1,7 +1,8 @@
 package com.example.dominickcaponi.quiztime;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mDButton;
     private Button mBackButton;
     private Button mNextButton;
+    private Button mCheatButton;
 
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.q_1, R.string.a_1, "A"),
@@ -53,15 +55,23 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
         mAButton = (Button) findViewById(R.id.option_a);
         mBButton = (Button) findViewById(R.id.option_b);
         mCButton = (Button) findViewById(R.id.option_c);
         mDButton = (Button) findViewById(R.id.option_d);
         mBackButton = (Button) findViewById(R.id.back_button);
         mNextButton = (Button) findViewById(R.id.next_button);
+        mCheatButton = (Button) findViewById(R.id.cheat_button);
 
         mQuestionText = (TextView) findViewById(R.id.question_text);
         mChoicesText = (TextView) findViewById(R.id.choices_text);
+
+        if(savedInstanceState != null){
+            questionNumber = savedInstanceState.getInt(instanceStateKey, 0);
+        }
+
+        showQuestion();
 
         mAButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,10 +121,13 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        if(savedInstanceState != null){
-            questionNumber = savedInstanceState.getInt(instanceStateKey, 0);
-        }
-        showQuestion();
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
