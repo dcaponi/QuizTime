@@ -7,9 +7,9 @@ package com.example.dominickcaponi.quiztime;
 public class Question {
     private int mQuestionID;
     private int mChoicesID;
-    private String mCorrectAnswer;
+    private char mCorrectAnswer;
 
-    public Question(int questionID, int choicesID, String correctAnswer) {
+    public Question(int questionID, int choicesID, char correctAnswer) {
         this.mQuestionID = questionID;
         this.mChoicesID = choicesID;
         this.mCorrectAnswer = correctAnswer;
@@ -23,7 +23,7 @@ public class Question {
         return mChoicesID;
     }
 
-    public String getCorrectAnswer() {
+    public char getCorrectAnswer() {
         return mCorrectAnswer;
     }
 }
