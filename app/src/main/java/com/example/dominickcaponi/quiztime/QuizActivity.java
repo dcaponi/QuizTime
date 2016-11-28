@@ -13,6 +13,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private int questionNumber = 0;
     private static final String instanceStateKey = "KEY_QUESTION";
+    private static final String instanceStateCheat = "KEY_CHEATED";
     private static final int REQ_CODE_CHEAT = 0;
     private boolean mCheated;
     private TextView mQuestionText;
@@ -80,6 +81,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if(savedInstanceState != null){
             questionNumber = savedInstanceState.getInt(instanceStateKey, 0);
+            mCheated = savedInstanceState.getBoolean(instanceStateCheat, false);
         }
 
         showQuestion();
@@ -161,5 +163,6 @@ public class QuizActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt(instanceStateKey, questionNumber);
+        savedInstanceState.putBoolean(instanceStateCheat, mCheated);
     }
 }

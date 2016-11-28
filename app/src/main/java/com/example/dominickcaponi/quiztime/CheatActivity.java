@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 public class CheatActivity extends AppCompatActivity {
 
+    private static final String instanceStateCheat = "KEY_CHEATED";
     private static final String EXTRA_ANSWER = "com.example.dominickcaponi.quiztime.answer";
     private static final String EXTRA_ANSWER_SHOWN = "com.example.dominickcaponi.quiztime.answer_shown";
     private char mCurrentAnswer;
+    private boolean mCheated;
     private TextView mAnswerTextView;
     private Button mShowAnswer;
 
@@ -37,6 +39,11 @@ public class CheatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
 
+        mCheated = false;
+        if(savedInstanceState != null){
+            mCheated = savedInstanceState.getBoolean(instanceStateCheat, false);
+        }
+
         mCurrentAnswer = this.getIntent().getCharExtra(EXTRA_ANSWER, 'E');
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
         mShowAnswer = (Button) findViewById(R.id.show_answer_button);
@@ -45,8 +52,16 @@ public class CheatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAnswerTextView.setText("The Correct Answer is " + mCurrentAnswer);
-                setAnswerShownResult(true);
+                mCheated = true;
+                setAnswerShownResult(mCheated);
             }
         });
+        setAnswerShownResult(mCheated);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putBoolean(instanceStateCheat, mCheated);
     }
 }
