@@ -8,11 +8,13 @@ public class Question {
     private int mQuestionID;
     private int mChoicesID;
     private char mCorrectAnswer;
+    private boolean mAnswered;
 
     public Question(int questionID, int choicesID, char correctAnswer) {
         this.mQuestionID = questionID;
         this.mChoicesID = choicesID;
         this.mCorrectAnswer = correctAnswer;
+        this.mAnswered = false;
     }
 
     public int getQuestionID() {
@@ -25,5 +27,12 @@ public class Question {
 
     public char getCorrectAnswer() {
         return mCorrectAnswer;
+    }
+
+    public boolean isAnswered() { return mAnswered; }
+
+    public boolean answerQuestion(){
+        this.mAnswered = true;
+        return this.mAnswered;
     }
 }

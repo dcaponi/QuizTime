@@ -12,12 +12,15 @@ import android.widget.Toast;
 public class QuizActivity extends AppCompatActivity {
 
     private int questionNumber = 0;
+    private int score = 0;
     private static final String instanceStateKey = "KEY_QUESTION";
     private static final String instanceStateCheat = "KEY_CHEATED";
+    private static final String instanceStateScore = "KEY_SCORE";
     private static final int REQ_CODE_CHEAT = 0;
     private boolean mCheated;
     private TextView mQuestionText;
     private TextView mChoicesText;
+    private TextView mScoreBoard;
     private Button mAButton;
     private Button mBButton;
     private Button mCButton;
@@ -45,22 +48,31 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void validateResponse(char userAnswer){
-        if(userAnswer == mQuestionBank[questionNumber].getCorrectAnswer() && mCheated){
-            Toast toast = Toast.makeText(this, "You Cheated. -1 point :(", Toast.LENGTH_SHORT);
-            toast.show();
+        if(!mQuestionBank[questionNumber].isAnswered()){
+            if(userAnswer == mQuestionBank[questionNumber].getCorrectAnswer() && mCheated){
+                Toast toast = Toast.makeText(this, "You Cheated. -1 point :(", Toast.LENGTH_SHORT);
+                toast.show();
+                score = score - 1;
+            }
+            if(userAnswer == mQuestionBank[questionNumber].getCorrectAnswer() && !mCheated){
+                Toast toast = Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT);
+                toast.show();
+                score = score + 2;
+            }
+            if(userAnswer != mQuestionBank[questionNumber].getCorrectAnswer() && mCheated){
+                Toast toast = Toast.makeText(this, "Cheated AND wrong -2 points :P", Toast.LENGTH_SHORT);
+                toast.show();
+                score = score - 2;
+            }
+            if(userAnswer != mQuestionBank[questionNumber].getCorrectAnswer() && !mCheated){
+                Toast toast = Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT);
+                toast.show();
+                score = score + 0;
+            }
+            mScoreBoard.setText("" + score);
+            mQuestionBank[questionNumber].answerQuestion();
         }
-        if(userAnswer == mQuestionBank[questionNumber].getCorrectAnswer() && !mCheated){
-            Toast toast = Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        if(userAnswer != mQuestionBank[questionNumber].getCorrectAnswer() && mCheated){
-            Toast toast = Toast.makeText(this, "Cheated and still wrong :P", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-        if(userAnswer != mQuestionBank[questionNumber].getCorrectAnswer() && !mCheated){
-            Toast toast = Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT);
-            toast.show();
-        }
+
     }
 
     @Override
@@ -78,13 +90,16 @@ public class QuizActivity extends AppCompatActivity {
 
         mQuestionText = (TextView) findViewById(R.id.question_text);
         mChoicesText = (TextView) findViewById(R.id.choices_text);
+        mScoreBoard = (TextView) findViewById(R.id.score_text);
 
         if(savedInstanceState != null){
             questionNumber = savedInstanceState.getInt(instanceStateKey, 0);
             mCheated = savedInstanceState.getBoolean(instanceStateCheat, false);
+            score = savedInstanceState.getInt(instanceStateScore, 0);
         }
 
         showQuestion();
+        mScoreBoard.setText("" + score);
 
         mAButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +184,7 @@ public class QuizActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putInt(instanceStateKey, questionNumber);
+        savedInstanceState.putInt(instanceStateScore, score);
         savedInstanceState.putBoolean(instanceStateCheat, mCheated);
     }
 }
