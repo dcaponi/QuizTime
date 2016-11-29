@@ -27,8 +27,9 @@
     <string name="a_9">\n A) Code in loop executes at least once \n B) Its easy to write \n C) do while loops spin faster \n D) makes code look pretty</string>
     <string name="q_10">Question 10: What does HTML stand for</string>
     <string name="a_10">\n A) How to meet ladies \n B) help to make loops \n C) help to move linux \n D) hypertext markup language</string>
-    <string name="warning_text">You will lose points for this. Are you sure you would like to proceed?</string>
+    <string name="warning_text">You will lose points for this and you may only view this answer once. Are you sure you would like to proceed?</string>
     <string name="cheat_button">Cheat</string>
     <string name="show_answer_button">Show Answer</string>
     <string name="judgement_toast">Cheating is wrong: -1 point</string>
+    <string name="score_label">Your Score</string>
 </resources>

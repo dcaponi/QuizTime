@@ -139,9 +139,15 @@ public class QuizActivity extends AppCompatActivity {
         mCheatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                char currentAnswer = mQuestionBank[questionNumber].getCorrectAnswer();
-                Intent i = CheatActivity.newCheatIntent(QuizActivity.this, currentAnswer);
-                startActivityForResult(i, REQ_CODE_CHEAT);
+                if(!mCheated){
+                    char currentAnswer = mQuestionBank[questionNumber].getCorrectAnswer();
+                    Intent i = CheatActivity.newCheatIntent(QuizActivity.this, currentAnswer);
+                    startActivityForResult(i, REQ_CODE_CHEAT);
+                }
+                else{
+                    Toast toast = Toast.makeText(QuizActivity.this, "You already cheated", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
     }

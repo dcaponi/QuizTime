@@ -11,10 +11,12 @@ import android.widget.TextView;
 public class CheatActivity extends AppCompatActivity {
 
     private static final String instanceStateCheat = "KEY_CHEATED";
+    private static final String instanceStateAnswer = "KEY_ANSWER";
     private static final String EXTRA_ANSWER = "com.example.dominickcaponi.quiztime.answer";
     private static final String EXTRA_ANSWER_SHOWN = "com.example.dominickcaponi.quiztime.answer_shown";
     private char mCurrentAnswer;
     private boolean mCheated;
+    private String mAnswerText;
     private TextView mAnswerTextView;
     private Button mShowAnswer;
 
@@ -39,19 +41,21 @@ public class CheatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
 
-        mCheated = false;
-        if(savedInstanceState != null){
-            mCheated = savedInstanceState.getBoolean(instanceStateCheat, false);
-        }
-
         mCurrentAnswer = this.getIntent().getCharExtra(EXTRA_ANSWER, 'E');
         mAnswerTextView = (TextView) findViewById(R.id.answer_text_view);
         mShowAnswer = (Button) findViewById(R.id.show_answer_button);
 
+        if(savedInstanceState != null){
+            mCheated = savedInstanceState.getBoolean(instanceStateCheat, false);
+            mAnswerText = savedInstanceState.getString(instanceStateAnswer, "");
+            mAnswerTextView.setText(mAnswerText);
+        }
+
         mShowAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mAnswerTextView.setText("The Correct Answer is " + mCurrentAnswer);
+                mAnswerText = "The Correct Answer is " + mCurrentAnswer;
+                mAnswerTextView.setText(mAnswerText);
                 mCheated = true;
                 setAnswerShownResult(mCheated);
             }
@@ -63,5 +67,6 @@ public class CheatActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putBoolean(instanceStateCheat, mCheated);
+        savedInstanceState.putString(instanceStateAnswer, mAnswerText);
     }
 }
